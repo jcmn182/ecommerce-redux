@@ -9,7 +9,7 @@ export const Signup = () => {
     const handleShow = () => setShow(true);
     return (
     <>
-            <Button variant="btn btn-outline-dark m-2" onClick={handleShow}>
+            <Button variant="light m-2 border" onClick={handleShow}>
                 Signup
             </Button>
             <Modal show={show} onHide={handleClose}>
