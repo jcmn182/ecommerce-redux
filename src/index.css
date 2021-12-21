@@ -131,6 +131,10 @@ body {
   width: 15%;
 }
 
+.hv-100{
+  height: 100vh;
+}
+
 .truncate-text{
   overflow-x: hidden;
   text-overflow: ellipsis;

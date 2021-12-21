@@ -5,13 +5,33 @@ import {Footer} from './components/Footer.jsx';
 import {Home} from './components/Views/Home.jsx';
 import {Cart} from './components/Views/Cart.jsx';
 // react router dependencies
-import { Routes,Route } from "react-router-dom";
-
+import { Routes,Route, Link } from "react-router-dom";
+// react dependencies
+import {useEffect,useState} from 'react';
+//bootstrap
+import {Button,Spinner} from 'react-bootstrap'
 import './App.css';
 
 function App() {
+
+  const [loading, setLoading] = useState(false)
+
+  const handlerLoader = () => setLoading(true);
+
+  useEffect(() => {
+   
+    const loader = () => {
+      
+      setTimeout(handlerLoader, 3000)
+  }
+
+  loader()
+
+  }, [])
+
   return (
-    <>
+    <div className="w-100 h-100">{loading?
+    (<div>
     <Header/>
       <Routes>
         <Route path="/" element={<Home/>} />
@@ -20,14 +40,23 @@ function App() {
         <Route
           path="*"
           element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
+            <main className="w-100 hv-100 d-flex justify-content-center flex-column 
+            align-items-center">
+              <p className="text-size-4">There's nothing here!</p>
+              <Button variant="light pay-size mt-1 button-w none-style-a "> 
+                    <Link to="/">Go to main page</Link> 
+                </Button>
             </main>
             }
         />
       </Routes>
-    <Footer/>  
-    </>
+    <Footer/> 
+    </div>):(
+      <div className="w-100 hv-100 d-flex justify-content-center align-items-center">
+        <Spinner animation="grow" size="xxl"/>
+      </div>
+    )}
+    </div>
   );
 }
 

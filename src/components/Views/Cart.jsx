@@ -124,12 +124,14 @@ export const Cart = () => {
             </div>
             :
             <div className="w-100 h-100 d-flex justify-content-center flex-column 
-            align-items-center d-flex">
+            align-items-center none-style-a">
                 <p className="text-size-5 p-0"> Done! </p>
-                <Button variant="outline-dark pay-size mt-1 button-w none-style-a"
-                    onClick={resetStates}> 
-                    <Link to="/">Go to main page</Link> 
-                </Button>
+                <Link to="/">
+                    <Button variant="outline-dark pay-size mt-1 button-w"
+                        onClick={resetStates}> 
+                        Go to main page
+                    </Button>
+                </Link>
             </div>
             ) }
         </Offcanvas>
