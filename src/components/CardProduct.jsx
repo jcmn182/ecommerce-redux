@@ -9,15 +9,15 @@ export const CardProduct = () => {
     return (
         <>
             {
-            products?.map( item => {
+            products?.map( (item) => {
                 return(
-                    <>
-                        <Card key={item.id} className="text-center m-4">
-                            <div className="center">
+                    <div key={item.id}>
+                        <Card  className="text-center m-4">
+                            <div className="center" >
                             <Card.Img variant="top" src={item.img} className="img-card px-5 pt-4 pb-1"/>
                             </div>
                             <Card.Body className="text-center"> 
-                                <Card.Text className="truncate-text text-size-2 mb-2">{item.name}</Card.Text>
+                                <Card.Text className="text-truncate text-size-2 mb-2">{item.name}</Card.Text>
                                 <Card.Text className="text-secondary font-weight-light text-size-1 mb-2">
                                 $ {item.price}
                                 </Card.Text>
@@ -26,7 +26,7 @@ export const CardProduct = () => {
                                 </Button>
                             </Card.Body>
                         </Card>
-                    </>
+                    </div>
                 )})
             }
         </>

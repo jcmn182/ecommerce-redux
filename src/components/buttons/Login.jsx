@@ -20,10 +20,10 @@ export const Login = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Button variant="danger w-100 mb-2" onClick={handleClose}>
-                        <span className="fa fa-google"></span> Sing in with Google
+                        <span className="fa fa-google mx-1"></span> Login with Google
                     </Button>
                     <Button variant="primary w-100 mb-2" onClick={handleClose}>
-                        <span className="fa fa-facebook"></span> Sing in with facebook    
+                        <span className="fa fa-facebook mx-1"></span> Login with facebook    
                     </Button>
                     <Form>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -41,7 +41,7 @@ export const Login = () => {
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
-                        <Button variant="primary w-100" onClick={handleClose} type="submit">
+                        <Button variant="outline-dark w-100" onClick={handleClose} type="submit">
                             Submit
                         </Button>
                     </Form>

@@ -11,6 +11,17 @@ body {
   text-decoration: none;
   color: inherit;
 }
+.right-1{
+  right: 40px;
+}
+
+.top-1{
+  top: 20px;
+}
+
+.pointer{
+  cursor: pointer;
+}
 
 /*Styles for the navbar sections*/
 .link-style{
@@ -38,6 +49,12 @@ body {
 .img-responsive{
   overflow-y: hidden;
   height: 92vh;
+}
+
+/*img shopping cart list*/
+.shopping-cart-list-img{
+  width: 10vh;
+  height: auto;
 }
 
 .single_card_product_lay_out{
@@ -76,9 +93,42 @@ body {
   font-size: 1.4vw;
 }
 
+.text-size-3{
+  font-size: 2.4vw;
+}
+
+.text-size-4{
+  font-size: 3.4vw !important;
+}
+.text-size-5{
+  font-size: 6.4vw;
+}
+
+.items-shoping-cart{
+  height: 47vh;
+  overflow-y: scroll;
+}
+
+.pay-view{
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+.pay-size{
+  width: 50%;
+}
+
 /* this class change the size from the button text */
 .text-size-button-1{
   font-size: 1vw !important;
+}
+
+.form-size{
+  width: 50%;
+}
+
+.button-w{
+  width: 15%;
 }
 
 .truncate-text{
@@ -87,6 +137,23 @@ body {
   white-space: nowrap;
 }
 @media (max-width: 1000px) { 
+
+  .button-w{
+    width: 50%;
+  }
+  
+
+  .text-size-5{
+    font-size: 22.4vw;
+  }
+
+  .pay-size{
+    width: 100%;
+  }
+
+    .form-size{
+      width: 95%;
+    }
 
   .single_card_product_lay_out{
     display: flex;
@@ -103,11 +170,19 @@ body {
     padding: 10px 5px 10px 5px;
   }
 
-  
+  .items-shoping-cart{
+    height: 60vh;
+    overflow-y: scroll;
+  }
+
   .btn-cart-responsive{
     color: cornsilk !important;
     background-color: black !important;
     width: 50px ;
+  }
+
+  .pay-view-1{
+    height: 30vh;
   }
 
   /*class that make the img slider responsive*/
@@ -157,6 +232,14 @@ body {
     font-size: 3.3vw;
   }
 
+  .text-size-3{
+    font-size: 5.4vw;
+  }
+  
+  .text-size-4{
+    font-size: 5.8vw !important;
+  }
+  
   .border{
     border: 1px solid black !important;
   }

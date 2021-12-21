@@ -1,13 +1,13 @@
 //bootstrap
 import { Carousel } from 'react-bootstrap'
 //images
-import img1 from '../assets/images/img1.jpg';
-import img2 from '../assets/images/arnel-hasanovic-4oWSXdeAS2g-unsplash.jpg';
-import img3 from '../assets/images/brandon-romanchuk-xpe7pyNmEbw-unsplash.jpg';
-import img4 from '../assets/images/miguel-tomas-fPZyN5Eih5E-unsplash.jpg';
+import img1 from '../../assets/images/img1.jpg';
+import img2 from '../../assets/images/arnel-hasanovic-4oWSXdeAS2g-unsplash.jpg';
+import img3 from '../../assets/images/brandon-romanchuk-xpe7pyNmEbw-unsplash.jpg';
+import img4 from '../../assets/images/miguel-tomas-fPZyN5Eih5E-unsplash.jpg';
 // components
-import { CardProduct } from '../components/CardProduct.jsx'
-import { LayOut } from '../components/LayOut.jsx';
+import { CardProduct } from '../CardProduct.jsx'
+import { LayOut } from '../LayOut.jsx';
 export const Home = () => {
     return (
         <>

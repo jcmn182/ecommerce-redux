@@ -1,7 +1,7 @@
 // react router
 import { useParams } from "react-router-dom";
 //fake data base 
-import products from '../db/fakeDB.js';
+import products from '../../db/fakeDB.js';
 //bootstrap
 import {Tabs,Tab,ListGroup,Button} from 'react-bootstrap';
 

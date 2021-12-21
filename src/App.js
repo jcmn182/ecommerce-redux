@@ -1,10 +1,9 @@
 //components
-import {About} from './components/About.jsx';
-import {Contact} from './components/Contact.jsx';
 import {Header} from './components/Header.jsx';
-import {SingleProduct} from './components/SingleProduct.jsx'
+import {SingleProduct} from './components/Views/SingleProduct.jsx'
 import {Footer} from './components/Footer.jsx';
-import {Home} from './components/Home.jsx';
+import {Home} from './components/Views/Home.jsx';
+import {Cart} from './components/Views/Cart.jsx';
 // react router dependencies
 import { Routes,Route } from "react-router-dom";
 
@@ -16,9 +15,7 @@ function App() {
     <Header/>
       <Routes>
         <Route path="/" element={<Home/>} />
-        {/*<Route path="/" element={<Navigate replace to="/home" />} />*/}
-        <Route path="/about" element={<About/>} />
-        <Route path="/contact" element={<Contact/>} />
+        <Route path="/bag" element={<Cart/>} />
         <Route path="product/:productId" element={<SingleProduct/>} />
         <Route
           path="*"
