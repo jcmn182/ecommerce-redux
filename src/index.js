@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // components
 import App from './App';
-// librarys
+// redux
+import {Provider} from 'react-redux';
+import store from './redux/store/store.js'
+// react reouter
 import {BrowserRouter as Router,} from 'react-router-dom';
+// bootstrap 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import reportWebVitals from './reportWebVitals';
@@ -13,9 +17,11 @@ import 'font-awesome/css/font-awesome.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>   
   </React.StrictMode>,
   document.getElementById('root')
 );

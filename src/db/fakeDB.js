@@ -14,7 +14,7 @@ const products = [
         name:faker.commerce.productName(),
         price:faker.commerce.price(),
         img:imgp1,
-        inStock:faker.random.arrayElement([0,3,5,6,7]),
+        inStock:faker.random.arrayElement([2,3,5,6,7]),
         fastDelivery:faker.datatype.boolean(),
         raitings:faker.random.arrayElement([1,2,3,4,5])
     },

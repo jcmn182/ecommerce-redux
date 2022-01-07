@@ -1,23 +1,39 @@
-// react router
-import { useParams } from "react-router-dom";
-//fake data base 
-import products from '../../db/fakeDB.js';
+// redux
+import {useSelector,useDispatch} from 'react-redux';
+//actions
+import {addCart,removeFromCart} from '../../redux/actions/cart.actions.js'
 //bootstrap
 import {Tabs,Tab,ListGroup,Button} from 'react-bootstrap';
 
 export const SingleProduct = () => {
-    const product = products[0]
-    const params = useParams()
-    console.log(params)
+    const dispatch = useDispatch()     
+    const {product} = useSelector(state => state.cart)
+    const {cart} = useSelector(state => state.cart)
+    const handleAddCart = (prd) =>{
+        dispatch(addCart(prd))
+    }
+    const handleRemoveCart = (id) =>{
+        dispatch(removeFromCart(id))
+    }
+
+    console.log(product)
+   
     return (
         <div className="single_card_product_lay_out">
            <div className="single_card_section_one p-5">
-                <img src={product.img} alt={params.name} className="img_single_product py-3"/>
-                <p className="py-3"> $ {product.price}</p>
-                <Button variant="outline-dark w-50">Add to cart</Button>
+                <img src={product[0].img} alt={product[0].name} className="img_single_product py-3"/>
+                <p className="py-3"> $ {product[0].price}</p>
+                {cart.some(item => item.id===product[0].id)?(
+                <Button variant="outline-dark w-50" onClick={()=>handleRemoveCart(product[0].id)}>
+                    Remove to cart
+                </Button>):(
+                <Button variant="outline-dark w-50" onClick={()=>handleAddCart(product[0])}>
+                    Add to cart
+                </Button>)
+                }
            </div>
            <div className="single_card_section_two py-5 px-2">
-                <h1 className="pb-5 px-1">{product.name}</h1>
+                <h1 className="pb-5 px-1">{product[0].name}</h1>
                 <Tabs defaultActiveKey="Description" id="uncontrolled-tab-example" className="mb-3">
                     <Tab eventKey="Description" title="Description">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 

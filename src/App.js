@@ -40,10 +40,11 @@ function App() {
         <Route
           path="*"
           element={
-            <main className="w-100 hv-100 d-flex justify-content-center flex-column 
+            <main className="w-100 hv-75 d-flex justify-content-center flex-column 
             align-items-center">
-              <p className="text-size-4">There's nothing here!</p>
-              <Button variant="light pay-size mt-1 button-w none-style-a "> 
+              <div className="text-size-5"><span className="fa fa-chain-broken "></span></div>
+              <p className="text-size-4 pt-3">There's nothing here!</p>
+              <Button variant="outline-dark pay-size mt-1  w-b-50  none-style-a "> 
                     <Link to="/">Go to main page</Link> 
                 </Button>
             </main>

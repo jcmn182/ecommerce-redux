@@ -8,7 +8,32 @@ import img4 from '../../assets/images/miguel-tomas-fPZyN5Eih5E-unsplash.jpg';
 // components
 import { CardProduct } from '../CardProduct.jsx'
 import { LayOut } from '../LayOut.jsx';
+import { Filter } from '../buttons/Filter.jsx'
+// hooks
+import {useState, useEffect} from 'react'
+
 export const Home = () => {
+
+    const [dimensions, setDimensions] = useState({ 
+        width: window.innerWidth
+      })
+      
+      useEffect(() => {
+
+        function handleResize() {
+          setDimensions({
+            width: window.innerWidth
+          })
+         } 
+         window.addEventListener('resize', handleResize)
+         console.log(dimensions.width)
+      },[dimensions])
+
+    
+    const screen = 900
+    const start = 'start'
+    const bottom = 'bottom'
+
     return (
         <>
             <Carousel>
@@ -65,6 +90,7 @@ export const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+            <Filter placement={dimensions.width<screen?bottom:start}/>
             <LayOut>
                 <CardProduct/>    
             </LayOut>

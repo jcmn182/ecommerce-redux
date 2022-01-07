@@ -1,7 +1,10 @@
-import {useState} from 'react'
-//fake data base 
-import products from '../../db/fakeDB.js';
-// react router dependencies
+// redux
+import {useSelector, useDispatch} from 'react-redux';
+//actions
+import {removeFromCart, addQty, cleanCart, addProduct} from '../../redux/actions/cart.actions.js'
+// react dependencies
+import {useEffect,useState} from 'react'
+// react router dependencies 
 import { Link } from "react-router-dom";
 //bootstrap
 import {Button, Offcanvas, Spinner} from 'react-bootstrap'
@@ -9,17 +12,38 @@ import {Button, Offcanvas, Spinner} from 'react-bootstrap'
 import {FormAddres} from '../forms/FormAddres.jsx';
 import {Payment} from '../forms/Payment.jsx';
 export const Cart = () => {
+    const dispatch = useDispatch()  
+    const {cart} = useSelector(state => state.cart)
+    
+    const [total, setTotal] = useState()
+    useEffect(() => {
+        setTotal(cart.reduce((acc,curr) => acc + Number(curr.price)* curr.qty, 0 ))
+     }, [cart])
 
     const [show, setShow] = useState(false);
     const [showNext, setShowNext] = useState(false);
     const [checked, setChecked] = useState(false);
     const [checking, setChecking] = useState(true)
-  
-    const handleClose = () => setShow(false);
-    const toggleShow = () => setShow((s) => !s);
-    const handleCloseNext = () => setShowNext(false);
-    const toggleShowNext = () => setShowNext((s) => !s);
-    const handlerLoader = () => setChecking(false);
+   
+    // actions
+    const handleQty = (value,id) =>{
+        dispatch(addQty(value,id))
+    }
+
+    const handleAddProduct = (item) =>{
+        dispatch(addProduct(item))
+    }
+
+    const handleRemoveCart = (id) =>{
+        dispatch(removeFromCart(id))
+    }
+
+    const handleCleanCart = (id) =>{
+        dispatch(cleanCart())
+    }
+
+    // actios styles
+
     const handlechecking = () => {
         setChecked(true)
         setTimeout(handlerLoader, 3000)
@@ -31,56 +55,62 @@ export const Cart = () => {
         setChecked(false)
         setChecking(true)
     }
-  
-
-    const productsOne = products[1];
-    const productsTwo = products[2];
-    const productsThree = products[3];
-    const productsFour = products[4]
+    const handleClose = () => setShow(false);
+    const toggleShow = () => setShow((s) => !s);
+    const handleCloseNext = () => setShowNext(false);
+    const toggleShowNext = () => setShowNext((s) => !s);
+    const handlerLoader = () => setChecking(false);
 
     return (
+        <>    
+        {
+        cart.length===0 && checked===false?
         <>
-            <div className="d-flex align-items-center flex-column">
-                <p className="font-weight-bold text-size-4 pt-3">Your Shopping cart has four items</p>
+        <div className="w-100 hv-75 d-flex justify-content-center flex-column 
+            align-items-center text-size-5"><span className="fa fa-thumbs-down"></span>
+            <p className="text-size-3 pt-3">Your shopping cart is empty</p> 
+            <p className="text-size-2 none-style-a">There's something awesome waiting for you   
+               <Link to="/" className="button-w text-danger"> HERE!</Link></p> 
+            </div>
+        </>:
+        <>
+        <div className="d-flex align-items-center flex-column">
+                <p className="font-weight-bold text-size-4 pt-3">Your Shopping cart has {cart.length} items</p>
                 <p className="font-weight-light text-size-3">Pay and get free shiping</p>
                 <div className="items-shoping-cart d-flex align-items-center flex-column w-75  border-bottom">
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsOne.img} alt={productsOne.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsOne.name}</p>
-                            <p>$ {productsOne.price}</p>
+                    {cart?.map( item => {
+                    return (
+                        <div className="d-flex justify-content-between mb-5 w-100" key={item.id}> 
+                            <div className="d-flex">
+                            <Link to={`/product/${item.name}`} onClick={()=>handleAddProduct(item)}>      
+                                <img src={item.img} alt={item.name} className="shopping-cart-list-img"/>
+                             </Link>       
+                                <div className="p-4">
+                                    <p className="text-size-2">{item.name}</p>
+                                    <p>$ {item.price}</p>
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column pt-4">
+                                <select value={item.qty} onChange={(e)=>{handleQty(e.target.value, item.id)}}>
+                                                        {[...Array(item.inStock).keys()].map((x) => (
+                                                            <option key={x + 1}>{x + 1}</option>
+                                                        ))}
+                                </select>
+                                <div onClick={()=>handleRemoveCart(item.id)} className="pointer d-flex flex-row-reverse pt-2"> 
+                                    <span className="fa fa-trash-o "></span> 
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsTwo.img} alt={productsTwo.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsTwo.name}</p>
-                            <p>$ {productsTwo.price}</p>
-                        </div>
-                    </div>
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsThree.img} alt={productsThree.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsThree.name}</p>
-                            <p>$ {productsThree.price}</p>
-                        </div>
-                    </div>
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsFour.img} alt={productsFour.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsFour.name}</p>
-                            <p>$ {productsFour.price}</p>
-                        </div>
-                    </div>
+                        )})
+                    }  
                 </div>
                 <div className=" d-flex justify-content-end w-75 pt-3">
                     <div className="d-flex flex-column">
-                        <p className="text-size-3 pt-1"> Total: $ 415</p>
+                        <p className="text-size-3 pt-1"> Total: ${total}</p>
                         <Button variant="outline-dark" onClick={toggleShow}>Pay</Button>
                     </div>
                 </div>
             </div>
-
         <Offcanvas show={show}  className="w-100">
             <div className="w-100 d-flex justify-content-end position-absolute right-1 top-1 text-size-4">
                 <div onClick={handleClose} className="pointer"><span className="fa fa-angle-left"></span> </div>
@@ -113,7 +143,11 @@ export const Cart = () => {
                         <Payment/>
                     </div>
                     <div className="w-100 pt-3">
-                        <Button variant="outline-dark pay-size mt-5" onClick={handlechecking}>Buy</Button>
+                        <Button variant="outline-dark pay-size mt-5" onClick={()=>{
+                            handlechecking();
+                            handleCleanCart();
+                        }}>Buy
+                        </Button>
                     </div>   
                 </Offcanvas.Body>
             </div>):
@@ -126,8 +160,9 @@ export const Cart = () => {
             <div className="w-100 h-100 d-flex justify-content-center flex-column 
             align-items-center none-style-a">
                 <p className="text-size-5 p-0"> Done! </p>
-                <Link to="/">
-                    <Button variant="outline-dark pay-size mt-1 button-w"
+                <Link to="/" className="w-100 d-flex justify-content-center flex-column 
+            align-items-center">
+                    <Button variant="outline-dark pay-size mt-1 w-b-50 mx-3"
                         onClick={resetStates}> 
                         Go to main page
                     </Button>
@@ -135,6 +170,8 @@ export const Cart = () => {
             </div>
             ) }
         </Offcanvas>
+        </>
+        }
         </>
     )
 }
