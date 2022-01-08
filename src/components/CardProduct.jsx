@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 //actions
 import {addProduct} from '../redux/actions/cart.actions.js';
-// redux
+// redux hooks
 import {useSelector, useDispatch} from 'react-redux';
 // bootstrap
 import { Card, Button } from 'react-bootstrap'
@@ -10,17 +10,35 @@ import { Card, Button } from 'react-bootstrap'
 export const CardProduct = () => {
 
    const dispatch = useDispatch()     
-   const {products} = useSelector(state => state.getData)
-   // handle functions
+   const {products, sort, byFastDelivery} = useSelector(state => state.getData)
    
+
+   // redux actions
    const handleAddProduct = (item) =>{
        dispatch(addProduct(item))
    }
+
+   const filterProducts = () =>{
+
+    let productsFilter = products
+
+    if (sort){
+        productsFilter = productsFilter.sort((a,b)=>
+            sort === "lowToHigh" ? a.price - b.price : b.price - a.price
+        )
+    }
+
+    if (byFastDelivery){
+        productsFilter = productsFilter.filter((item)=> item.fastDelivery)
+    }
+
+    return productsFilter
+}
    
     return (
         <>
             {
-            products?.map( item => {
+            filterProducts()?.map( item => {
                 return(
                     <div key={item.id}>
                         <Card  className="text-center m-4">

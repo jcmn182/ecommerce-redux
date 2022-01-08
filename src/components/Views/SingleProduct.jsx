@@ -1,4 +1,4 @@
-// redux
+// redux hooks
 import {useSelector,useDispatch} from 'react-redux';
 //actions
 import {addCart,removeFromCart} from '../../redux/actions/cart.actions.js'

@@ -2,7 +2,7 @@
 import {useSelector, useDispatch} from 'react-redux';
 //actions
 import {removeFromCart, addQty, cleanCart, addProduct} from '../../redux/actions/cart.actions.js'
-// react dependencies
+// react hooks
 import {useEffect,useState} from 'react'
 // react router dependencies 
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ export const Cart = () => {
     const [checked, setChecked] = useState(false);
     const [checking, setChecking] = useState(true)
    
-    // actions
+    // redux actions
     const handleQty = (value,id) =>{
         dispatch(addQty(value,id))
     }
@@ -91,11 +91,14 @@ export const Cart = () => {
                                 </div>
                             </div>
                             <div className="d-flex flex-column pt-4">
+                            {
+                                item.inStock===0? null:
                                 <select value={item.qty} onChange={(e)=>{handleQty(e.target.value, item.id)}}>
                                                         {[...Array(item.inStock).keys()].map((x) => (
                                                             <option key={x + 1}>{x + 1}</option>
                                                         ))}
                                 </select>
+                            }
                                 <div onClick={()=>handleRemoveCart(item.id)} className="pointer d-flex flex-row-reverse pt-2"> 
                                     <span className="fa fa-trash-o "></span> 
                                 </div>

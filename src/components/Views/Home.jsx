@@ -9,7 +9,7 @@ import img4 from '../../assets/images/miguel-tomas-fPZyN5Eih5E-unsplash.jpg';
 import { CardProduct } from '../CardProduct.jsx'
 import { LayOut } from '../LayOut.jsx';
 import { Filter } from '../buttons/Filter.jsx'
-// hooks
+// react hooks
 import {useState, useEffect} from 'react'
 
 export const Home = () => {
