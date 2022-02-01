@@ -1,0 +1,109 @@
+@media (max-width: 1000px) { 
+
+  .w-b-50{
+    width: 50% !important;
+  }
+
+  .text-size-5{
+    font-size: 22.4vw;
+  }
+
+  .pay-size{
+    width: 100%;
+  }
+
+    .form-size{
+      width: 95%;
+    }
+
+  .single_card_product_lay_out{
+    display: flex;
+    flex-direction: column;
+    }
+
+    .single_card_section_one, 
+    .single_card_section_two{
+      width: 100%;
+    }  
+
+  /*Styles for the navbar sections*/
+  .link-style{
+    padding: 10px 5px 10px 5px;
+  }
+
+  .items-shoping-cart{
+    height: 60vh;
+    overflow-y: scroll;
+  }
+
+  .btn-cart-responsive{
+    color: cornsilk !important;
+    background-color: black !important;
+    width: 50px ;
+  }
+
+  .pay-view-1{
+    height: 30vh;
+  }
+
+  /*class that make the img slider responsive*/
+  .img-height{
+    height: 50vh;
+  }
+  /*class that make the img slider container responsive*/
+  .img-responsive{
+    overflow-y: hidden;
+    height: 50vh;
+  }
+
+  /* Login, Sing up and Btn cart buttons responsive styles  */
+  .responsive-buttons{
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  /* this style line up the btn cart to the left */
+  .r-1{
+    right: 0;
+  }
+  
+  /* this class center the img from the product cart*/
+  .center{
+    display: flex;
+    justify-content: center;
+  }
+
+  /* responsive img card style's */
+  .img-card{
+    width: 30vh !important;
+    height: 30vh;
+  }
+
+  /* this class change the size from the button text */
+  .text-size-button-1{
+    font-size: 3.5vw !important;
+  }
+
+  .text-size-2{
+    font-size: 3.6vw;
+  }
+
+  .text-size-1{
+    font-size: 3.3vw;
+  }
+
+  .text-size-3{
+    font-size: 5.4vw;
+  }
+  
+  .text-size-4{
+    font-size: 5.8vw !important;
+  }
+  
+  .border{
+    border: 1px solid black !important;
+  }
+
+ }
+  

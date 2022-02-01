@@ -1,0 +1,17 @@
+.right-1{
+  right: 40px;
+}
+  
+.top-1{
+  top: 20px;
+}
+
+/* this style line up the btn cart to the right */
+
+.r-1{
+  right: -130px;
+}
+
+.responsive-buttons{
+  position: absolute;
+}

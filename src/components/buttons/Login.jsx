@@ -11,7 +11,7 @@ export const Login = () => {
 
     return (
         <>
-            <Button variant="light m-2 border" onClick={handleShow}>
+            <Button variant="outline-dark m-2 border" onClick={handleShow}>
                 Login
             </Button>
             <Modal show={show} onHide={handleClose}>
@@ -45,7 +45,7 @@ export const Login = () => {
                             Submit
                         </Button>
                     </Form>
-                    </Modal.Body>
+                </Modal.Body>
             </Modal>  
         </>
     )

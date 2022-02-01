@@ -1,0 +1,38 @@
+/*Styles for the navbar sections*/
+.link-style{
+    padding: 0px 15px 0px 15px;
+  }
+
+/*img shopping cart list*/
+.shopping-cart-list-img{
+    width: 15vh;
+    height: auto;
+  }
+
+.single_card_section_two{
+    width: 50%;
+    height: 60vh;
+  }
+
+.img_single_product{
+    width: 30vh;
+    height: auto;
+  }
+
+/*img card size*/
+.img-card{
+    width: 20vh;
+    height: 40vh;
+  }
+
+.pay-size{
+    width: 50%;
+  }
+
+.form-size{
+    width: 50%;
+  }
+  
+.button-w{
+    width: 15%;
+  }

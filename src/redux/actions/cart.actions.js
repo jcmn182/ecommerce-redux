@@ -1,4 +1,5 @@
 //types
+<<<<<<< HEAD
 import {ADD_PRODUCTS, ADD_TO_CART,REMOVE_FROM_CART,CLEAN,CHANGE_CART_QTY} from '../types/cart.types.js'
 
 export const addProduct = (prod) => {
@@ -8,6 +9,9 @@ export const addProduct = (prod) => {
         payload:prod
     }
 }
+=======
+import {ADD_TO_CART,REMOVE_FROM_CART,CLEAN,CHANGE_CART_QTY} from '../types/cart.types.js'
+>>>>>>> redux/thunk
 
 export const addCart = (prod) => {
 

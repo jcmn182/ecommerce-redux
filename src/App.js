@@ -1,4 +1,5 @@
 //components
+<<<<<<< HEAD
 import {Header} from './components/Header.jsx';
 import {SingleProduct} from './components/Views/SingleProduct.jsx'
 import {Footer} from './components/Footer.jsx';
@@ -33,9 +34,32 @@ function App() {
     <div className="w-100 h-100">{loading?
     (<div>
     <Header/>
+=======
+import {CardProducts} from './components/containers/CardProducts.jsx';
+import {Home} from './components/pages/Home.jsx';
+import {Cart} from './components/pages/Cart.jsx';
+import {MainLayOut} from './components/containers/MainLayOut.jsx'
+import {SingleProduct} from './components/pages/SingleProduct.jsx';
+// react router 
+import { Routes,Route, Link} from "react-router-dom";
+// redux
+import {useSelector} from 'react-redux';
+//bootstrap
+import {Button} from 'react-bootstrap'
+
+function App() {
+  const {sectionOne,sectionTwo,sectionThree,sectionFour} = useSelector(state => state.FakeApi)
+  return (
+    <>
+>>>>>>> redux/thunk
       <Routes>
+        <Route element={ <MainLayOut/>}>
         <Route path="/" element={<Home/>} />
         <Route path="/bag" element={<Cart/>} />
+        <Route path="/electronics" element={<CardProducts products={sectionOne}/>} />
+        <Route path="/jewelery" element={<CardProducts products={sectionTwo}/>} />
+        <Route path="/men" element={<CardProducts products={sectionThree}/>} />
+        <Route path="/women" element={<CardProducts products={sectionFour}/>} />
         <Route path="product/:productId" element={<SingleProduct/>} />
         <Route
           path="*"
@@ -46,11 +70,17 @@ function App() {
               <p className="text-size-4 pt-3">There's nothing here!</p>
               <Button variant="outline-dark pay-size mt-1  w-b-50  none-style-a "> 
                     <Link to="/">Go to main page</Link> 
+<<<<<<< HEAD
                 </Button>
+=======
+              </Button>
+>>>>>>> redux/thunk
             </main>
             }
         />
+        </Route>
       </Routes>
+<<<<<<< HEAD
     <Footer/> 
     </div>):(
       <div className="w-100 hv-100 d-flex justify-content-center align-items-center">
@@ -58,6 +88,9 @@ function App() {
       </div>
     )}
     </div>
+=======
+    </>
+>>>>>>> redux/thunk
   );
 }
 
