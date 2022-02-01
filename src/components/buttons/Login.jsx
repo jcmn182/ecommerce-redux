@@ -1,6 +1,6 @@
 // react bootstrap
 import { Button,Modal,Form } from 'react-bootstrap'
-// react dependecies
+// react hooks
 import {useState} from 'react';
 
 
@@ -45,7 +45,7 @@ export const Login = () => {
                             Submit
                         </Button>
                     </Form>
-                    </Modal.Body>
+                </Modal.Body>
             </Modal>  
         </>
     )

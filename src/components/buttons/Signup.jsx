@@ -1,6 +1,6 @@
 // react bootstrap
 import { Button,Modal,Form } from 'react-bootstrap'
-// react dependecies
+// react hooks
 import {useState} from 'react';
 
 export const Signup = () => {

@@ -1,5 +1,7 @@
 //  react router
 import { Link  } from "react-router-dom";
+// react hooks 
+import {useEffect,useState} from 'react';
 // bootstrap
 import { Card, Button, Spinner } from 'react-bootstrap'
 // components
@@ -7,10 +9,24 @@ import {Filterbtn} from '../buttons/Filterbtn.jsx';
 
 export const CardProducts = ({products}) => {
 
+    const [loading, setLoading] = useState(false)
+
+    const handlerLoader = () => setLoading(true);
+
+    // side effects
+    useEffect(() => {
+        const loader = () => {
+           if (products) {
+            handlerLoader()
+           }
+      }
+      loader()
+      }, [products])
+
     return (
-    <>
+    <div className="w-100 h-100">
         {
-        products?<>
+                loading?<>
                 <Filterbtn category={products} />
                 <div className="lay_out">
                     {
@@ -36,11 +52,11 @@ export const CardProducts = ({products}) => {
                     }
                 </div>
                 </>
-                    :
-                    <div className="w-100 hv-100 d-flex justify-content-center align-items-center">
-                        <Spinner animation="grow" size="xxl"/>
-                    </div>
+                :
+                <div className="w-100 hv-100 d-flex justify-content-center align-items-center">
+                    <Spinner animation="grow" size="xxl"/>
+                </div>
         } 
-    </>
+    </div>
     )
 }

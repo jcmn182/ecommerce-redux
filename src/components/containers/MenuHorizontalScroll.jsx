@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 export const MenuHorizontalScroll = () => {
     //redux hooks
     const dispatch = useDispatch(); 
-    //handle functions
+    //hooks actions
     const handleAddparamElectronics = (param) =>{
         dispatch(HandleAddElectronics(param))
     };
