@@ -1,0 +1,9 @@
+.menu-horizontal-scroll{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.menu-horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}

@@ -1,20 +1,34 @@
-import {useState} from 'react'
-//fake data base 
-import products from '../../db/fakeDB.js';
-// react router dependencies
+//hooks
+import {useState,useEffect} from 'react'
+// redux hooks
+import {useDispatch,useSelector} from 'react-redux';
+// react router 
 import { Link } from "react-router-dom";
 //bootstrap
 import {Button, Offcanvas, Spinner} from 'react-bootstrap'
 // components
 import {FormAddres} from '../forms/FormAddres.jsx';
 import {Payment} from '../forms/Payment.jsx';
+
+import {removeFromCart} from '../../redux/actions/cart.actions.js'
+
 export const Cart = () => {
 
+    const dispatch = useDispatch();
+    const {cart} = useSelector(state => state.cart);
     const [show, setShow] = useState(false);
     const [showNext, setShowNext] = useState(false);
     const [checked, setChecked] = useState(false);
     const [checking, setChecking] = useState(true)
+    const [total, setTotal] = useState()
+
+    //side effects
+
+    useEffect(() => {
+        setTotal(cart.reduce((acc,curr) => acc + Number(curr.price)* curr.qty, 0 ))
+     }, [cart])
   
+    //handle functions
     const handleClose = () => setShow(false);
     const toggleShow = () => setShow((s) => !s);
     const handleCloseNext = () => setShowNext(false);
@@ -31,51 +45,43 @@ export const Cart = () => {
         setChecked(false)
         setChecking(true)
     }
-  
 
-    const productsOne = products[1];
-    const productsTwo = products[2];
-    const productsThree = products[3];
-    const productsFour = products[4]
+    const handleRemoveCart = (id) =>{
+        dispatch(removeFromCart(id))
+    }
+  
 
     return (
         <>
             <div className="d-flex align-items-center flex-column">
-                <p className="font-weight-bold text-size-4 pt-3">Your Shopping cart has four items</p>
+                <p className="font-weight-bold text-size-4 pt-3">Your Shopping cart has {cart.length} {cart.length>1?"items":"item"}</p>
                 <p className="font-weight-light text-size-3">Pay and get free shiping</p>
                 <div className="items-shoping-cart d-flex align-items-center flex-column w-75  border-bottom">
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsOne.img} alt={productsOne.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsOne.name}</p>
-                            <p>$ {productsOne.price}</p>
+                    
+                {cart?.map( item => {
+                    return (
+                        <div className="d-flex justify-content-between mb-5 w-100" key={item.id}> 
+                            <div className="d-flex">    
+                                <img src={item.image} alt={item.title} className="shopping-cart-list-img"/>
+                                <div className="p-4">
+                                    <p className="text-size-2">{item.title}</p>
+                                    <p>$ {item.price}</p>
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column pt-4">
+                          
+                                <div onClick={()=>handleRemoveCart(item.id)} className="pointer d-flex flex-row-reverse pt-2"> 
+                                    <span className="fa fa-trash-o "></span> 
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsTwo.img} alt={productsTwo.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsTwo.name}</p>
-                            <p>$ {productsTwo.price}</p>
-                        </div>
-                    </div>
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsThree.img} alt={productsThree.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsThree.name}</p>
-                            <p>$ {productsThree.price}</p>
-                        </div>
-                    </div>
-                    <div className="d-flex mb-5 w-100">
-                        <img src={productsFour.img} alt={productsFour.name} className="shopping-cart-list-img"/>
-                        <div className="p-4">
-                            <p className="text-size-2">{productsFour.name}</p>
-                            <p>$ {productsFour.price}</p>
-                        </div>
-                    </div>
+                        )})
+                    }
+
                 </div>
                 <div className=" d-flex justify-content-end w-75 pt-3">
                     <div className="d-flex flex-column">
-                        <p className="text-size-3 pt-1"> Total: $ 415</p>
+                        <p className="text-size-3 pt-1"> Total: $ {total}</p>
                         <Button variant="outline-dark" onClick={toggleShow}>Pay</Button>
                     </div>
                 </div>

@@ -1,21 +1,26 @@
 //components
-import {Header} from './components/Header.jsx';
-import {SingleProduct} from './components/Views/SingleProduct.jsx'
-import {Footer} from './components/Footer.jsx';
-import {Home} from './components/Views/Home.jsx';
-import {Cart} from './components/Views/Cart.jsx';
-// react router dependencies
+import {CardProducts} from './components/containers/CardProducts.jsx';
+import {Home} from './components/pages/Home.jsx';
+import {Cart} from './components/pages/Cart.jsx';
+import {MainLayOut} from './components/containers/MainLayOut.jsx'
+import {SingleProduct} from './components/pages/SingleProduct.jsx';
+// react router 
 import { Routes,Route } from "react-router-dom";
-
-import './App.css';
+// redux
+import {useSelector} from 'react-redux';
 
 function App() {
+  const {sectionOne,sectionTwo,sectionThree,sectionFour} = useSelector(state => state.FakeApi)
   return (
     <>
-    <Header/>
       <Routes>
+        <Route element={ <MainLayOut/>}>
         <Route path="/" element={<Home/>} />
         <Route path="/bag" element={<Cart/>} />
+        <Route path="/electronics" element={<CardProducts products={sectionOne}/>} />
+        <Route path="/jewelery" element={<CardProducts products={sectionTwo}/>} />
+        <Route path="/men" element={<CardProducts products={sectionThree}/>} />
+        <Route path="/women" element={<CardProducts products={sectionFour}/>} />
         <Route path="product/:productId" element={<SingleProduct/>} />
         <Route
           path="*"
@@ -25,8 +30,8 @@ function App() {
             </main>
             }
         />
+        </Route>
       </Routes>
-    <Footer/>  
     </>
   );
 }

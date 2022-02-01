@@ -1,16 +1,10 @@
 //bootstrap
-import { Carousel } from 'react-bootstrap'
-//images
-import img1 from '../../assets/images/img1.jpg';
-import img2 from '../../assets/images/arnel-hasanovic-4oWSXdeAS2g-unsplash.jpg';
-import img3 from '../../assets/images/brandon-romanchuk-xpe7pyNmEbw-unsplash.jpg';
-import img4 from '../../assets/images/miguel-tomas-fPZyN5Eih5E-unsplash.jpg';
-// components
-import { CardProduct } from '../CardProduct.jsx'
-import { LayOut } from '../LayOut.jsx';
+//import { Carousel } from 'react-bootstrap'
+
 export const Home = () => {
     return (
         <>
+        {/*
             <Carousel>
                 <Carousel.Item>
                     <div className="img-responsive">
@@ -64,10 +58,7 @@ export const Home = () => {
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-            </Carousel>
-            <LayOut>
-                <CardProduct/>    
-            </LayOut>
+            </Carousel>*/}     
         </>
     )
 }
